@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
 
     # Configure VM
-    config.vm.box = "bento/ubuntu-16.04"
+    config.vm.box = "ubuntu/xenial64"
     config.ssh.insert_key = false
     config.vm.network "public_network"
 
@@ -17,7 +17,6 @@ Vagrant.configure("2") do |config|
         vb.memory = 2048
         vb.gui = false
         vb.name = "docker"
-        override.vm.synced_folder "./provision", "/vagrant"
     end
 
 end

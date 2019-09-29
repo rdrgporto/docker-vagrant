@@ -32,12 +32,6 @@ git clone https://github.com/rdrgporto/docker-vagrant.git
 
 ### <u>Run Vagrant</u> :rocket:
 
-First of all, it is necessary to install a **plugin for Vagrant** in order to mount share folders on **Virtualbox** ([GItHub Issue](https://github.com/scotch-io/scotch-box/issues/296)) :
-
-``` bash
-vagrant plugin install vagrant-vbguest
-```
-
 **Vagrant** is configured with two kinds of network, **internal** and **public**. You can use **public network** in order to login via any kind of **SSH client** ([Putty](https://www.putty.org/), [MobaXterm](https://mobaxterm.mobatek.net/), [Termius](https://www.termius.com/)):
 
 ```bash
