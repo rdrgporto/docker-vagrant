@@ -10,7 +10,52 @@ This repository was created with the aim of testing **Docker** easily. Moreover,
 
 - Download **Virtualbox**: [Link](https://www.virtualbox.org/wiki/Downloads)
 
+## Installation guide for Ubuntu 18.04 :penguin:
+
+First of all, we should check if **VirtualBox & Vagrant** are installed:
+
+```bash
+rdrg@ubuntu:~$ sudo dpkg -l | grep virtualbox
+ii  virtualbox-6.0                                    6.0.12-133076~Ubuntu~bionic                   amd64        Oracle VM VirtualBox
+
+rdrg@ubuntu:~$ sudo dpkg -l | grep vagrant
+ii  vagrant                                           1:2.2.5   
+```
+
+We remove them in order to make a clean install:
+
+```bash
+rdrg@ubuntu:~$ sudo apt -y remove --purge virtualbox-6.0 
+
+rdrg@ubuntu:~$ sudo apt -y remove --purge vagrant
+
+rdrg@ubuntu:~$ sudo apt -y autoremove ; sudo apt -y autoclean
+```
+
+We reboot our machine:
+
+```bash
+rdrg@ubuntu:~$ sudo reboot
+```
+
+We update our **OS** and install **Virtualbox & Vagrant**:
+
+```bash
+rdrg@ubuntu:~$ sudo apt update ; sudo apt -y upgrade
+
+rdrg@ubuntu:~$ sudo apt -y install libqt5opengl5 libqt5printsupport5 libqt5x11extras5 libsdl1.2debian
+
+rdrg@ubuntu:~$ wget -O virtualbox.deb https://download.virtualbox.org/virtualbox/6.0.14/virtualbox-6.0_6.0.14-133895~Ubuntu~bionic_amd64.deb
+
+rdrg@ubuntu:~$ sudo dpkg -i virtualbox.deb
+
+rdrg@ubuntu:~$ wget -O vagrant.deb https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.deb
+
+rdrg@ubuntu:~$ sudo dpkg -i vagrant.deb
+```
+
 ## Up and SSH
+
 ### <u>Install Git</u>
 
 - #### Linux :penguin:
