@@ -10,7 +10,7 @@ This repository was created with the aim of testing **Docker** easily. Moreover,
 
 - Download **Virtualbox**: [Link](https://www.virtualbox.org/wiki/Downloads)
 
-## Installation guide for Ubuntu 18.04 :penguin:
+### <u>Installation guide for Ubuntu 18.04</u>
 
 First of all, we should check if **VirtualBox & Vagrant** are installed:
 
@@ -22,7 +22,7 @@ rdrg@ubuntu:~$ sudo dpkg -l | grep vagrant
 ii  vagrant                                           1:2.2.5   
 ```
 
-We remove them in order to make a clean install:
+Remove them in order to make a clean install:
 
 ```bash
 rdrg@ubuntu:~$ sudo apt -y remove --purge virtualbox-6.0 
@@ -32,13 +32,13 @@ rdrg@ubuntu:~$ sudo apt -y remove --purge vagrant
 rdrg@ubuntu:~$ sudo apt -y autoremove ; sudo apt -y autoclean
 ```
 
-We reboot our machine:
+Reboot our machine:
 
 ```bash
 rdrg@ubuntu:~$ sudo reboot
 ```
 
-We update our **OS** and install **Virtualbox & Vagrant**:
+Update **OS** and install **Virtualbox & Vagrant**:
 
 ```bash
 rdrg@ubuntu:~$ sudo apt update ; sudo apt -y upgrade
@@ -52,6 +52,64 @@ rdrg@ubuntu:~$ sudo dpkg -i virtualbox.deb
 rdrg@ubuntu:~$ wget -O vagrant.deb https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.deb
 
 rdrg@ubuntu:~$ sudo dpkg -i vagrant.deb
+```
+
+Check **Virtualbox & Vagrant** version:
+
+```bash
+rdrg@ubuntu:~/GitHub/docker-vagrant$ vboxmanage --version
+6.0.14r133895
+rdrg@ubuntu:~/GitHub/docker-vagrant$ vagrant --version
+Vagrant 2.2.6
+```
+
+### <u>Installation guide for CentOS 7</u>
+
+First of all, we should check if **VirtualBox & Vagrant** are installed:
+
+```bash
+[rdrg@centos7 ~]$ rpm -qa | grep -i virtualbox
+VirtualBox-6.0-6.0.14_133895_el7-1.x86_64
+
+[rdrg@centos7 ~]$ rpm -qa | grep -i vagrant
+vagrant-2.2.6-1.x86_64
+```
+
+Remove them in order to make a clean install:
+
+```bash
+[rdrg@centos7 ~]$ sudo yum -y remove VirtualBox-6.0-6.0.14_133895_el7-1.x86_64
+[rdrg@centos7 ~]$ sudo yum -y remove vagrant-2.2.6-1.x86_64
+```
+
+Reboot our machine:
+
+```bash
+[rdrg@centos7 ~]$ sudo reboot
+```
+
+Update **OS** and install **Virtualbox & Vagrant**:
+
+```bash
+[rdrg@centos7 ~]$ sudo yum -y update
+[rdrg@centos7 ~]$ sudo yum -y install binutils qt gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms SDL libvpx opus fontforge wget git
+[rdrg@centos7 ~]$ sudo reboot
+```
+
+```bash
+[rdrg@centos7 ~]$ wget -O virtualbox.rpm https://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0-6.0.14_133895_el7-1.x86_64.rpm
+[rdrg@centos7 ~]$ sudo rpm -ivh virtualbox.rpm
+[rdrg@centos7 ~]$ wget -O vagrant.rpm https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.rpm
+[rdrg@centos7 ~]$ sudo rpm -ivh vagrant.rpm
+```
+
+Check **Virtualbox & Vagrant** version:
+
+```bash
+[rdrg@centos7 ~]$ vboxmanage --version
+6.0.14r133895
+[rdrg@centos7 ~]$ vagrant --version
+Vagrant 2.2.6
 ```
 
 ## Up and SSH
