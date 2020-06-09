@@ -51,7 +51,7 @@ systemctl enable docker &> /dev/null
 echo "[$(DATE)] [Info] [System] Installing Docker Compose..."
 
 # Install Docker Compose
-curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &> /dev/null
+curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &> /dev/null
 chmod +x /usr/local/bin/docker-compose &> /dev/null
 ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose &> /dev/null
 
