@@ -7,6 +7,9 @@ DATE() {
 
 # Variables
 IP=`ip -o addr show up primary scope global | while read -r num dev fam addr rest; do echo [$(DATE)] [Info] [System] ${addr%/*}; done`
+VM_USER=vagrant
+DOCKER_VERSION=19.03.8
+DOCKER_COMPOSE_VERSION=1.25.5
 
 # Non-Interactive Installation
 export DEBIAN_FRONTEND=noninteractive
@@ -26,7 +29,7 @@ apt -y install \
     software-properties-common \
     bash-completion &> /dev/null
 
-echo "[$(DATE)] [Info] [System] Installing Docker..."
+echo "[$(DATE)] [Info] [Docker] Installing Docker..."
 
 # Add Docker's official GPG key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - &> /dev/null
@@ -40,18 +43,18 @@ add-apt-repository \
 
 # Install Docker
 apt -y update &> /dev/null
-apt -y install docker-ce docker-ce-cli containerd.io &> /dev/null
+apt -y install docker-ce=5:$DOCKER_VERSION~3-0~ubuntu-xenial docker-ce-cli=5:$DOCKER_VERSION~3-0~ubuntu-xenial containerd.io=1.2.13-1 &> /dev/null
 
 # To run Docker without sudo
-usermod -aG docker vagrant &> /dev/null
+usermod -aG docker $VM_USER &> /dev/null
 
 # Enable service
 systemctl enable docker &> /dev/null
 
-echo "[$(DATE)] [Info] [System] Installing Docker Compose..."
+echo "[$(DATE)] [Info] [Docker Compose] Installing Docker Compose..."
 
 # Install Docker Compose
-curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &> /dev/null
+curl -L "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &> /dev/null
 chmod +x /usr/local/bin/docker-compose &> /dev/null
 ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose &> /dev/null
 
