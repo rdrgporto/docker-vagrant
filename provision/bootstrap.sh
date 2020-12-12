@@ -8,7 +8,7 @@ DATE() {
 # Variables
 IP=`ip -o addr show up primary scope global | while read -r num dev fam addr rest; do echo [$(DATE)] [Info] [System] ${addr%/*}; done`
 VM_USER=vagrant
-DOCKER_VERSION=19.03.12
+DOCKER_VERSION=20.10.0
 DOCKER_COMPOSE_VERSION=1.27.4
 
 # Non-Interactive Installation
@@ -43,7 +43,7 @@ add-apt-repository \
 
 # Install Docker
 apt -y update &> /dev/null
-apt -y install docker-ce=5:$DOCKER_VERSION~3-0~ubuntu-xenial docker-ce-cli=5:$DOCKER_VERSION~3-0~ubuntu-xenial containerd.io=1.2.13-1 &> /dev/null
+apt -y install docker-ce=5:$DOCKER_VERSION~3-0~ubuntu-bionic docker-ce-cli=5:$DOCKER_VERSION~3-0~ubuntu-bionic containerd.io=1.4.3-1 &> /dev/null
 
 # To run Docker without sudo
 usermod -aG docker $VM_USER &> /dev/null
