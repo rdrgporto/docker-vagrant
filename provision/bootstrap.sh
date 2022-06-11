@@ -8,16 +8,12 @@ DATE() {
 # Variables
 IP=`ip -o addr show up primary scope global | while read -r num dev fam addr rest; do echo [$(DATE)] [Info] [System] ${addr%/*}; done`
 VM_USER=vagrant
-DOCKER_VERSION=20.10.11
-DOCKER_COMPOSE_VERSION=1.29.2
+DOCKER_VERSION=20.10.16
+DOCKER_COMPOSE_VERSION=2.6.0
+CONTAINERD_VERSION=1.6.6-1
 
 # Non-Interactive Installation
 export DEBIAN_FRONTEND=noninteractive
-
-# Update & Upgrade System
-echo "[$(DATE)] [Info] [System] Updating & Upgrading System..."
-apt -y update &> /dev/null
-apt -y upgrade &> /dev/null
 
 # Install packages to allow apt to use a repository over HTTPS
 echo "[$(DATE)] [Info] [System] Installing tools..."
@@ -43,7 +39,7 @@ add-apt-repository \
 
 # Install Docker
 apt -y update &> /dev/null
-apt -y install docker-ce=5:$DOCKER_VERSION~3-0~ubuntu-bionic docker-ce-cli=5:$DOCKER_VERSION~3-0~ubuntu-bionic containerd.io=1.4.3-1 &> /dev/null
+apt -y install docker-ce=5:$DOCKER_VERSION~3-0~ubuntu-focal docker-ce-cli=5:$DOCKER_VERSION~3-0~ubuntu-focal containerd.io=$CONTAINERD_VERSION &> /dev/null
 
 # To run Docker without sudo
 usermod -aG docker $VM_USER &> /dev/null
@@ -54,9 +50,7 @@ systemctl enable docker &> /dev/null
 echo "[$(DATE)] [Info] [Docker Compose] Installing Docker Compose..."
 
 # Install Docker Compose
-curl -L "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &> /dev/null
-chmod +x /usr/local/bin/docker-compose &> /dev/null
-ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose &> /dev/null
+apt -y install docker-compose-plugin=$DOCKER_COMPOSE_VERSION~ubuntu-focal &> /dev/null
 
 # Clean unneeded packages
 echo "[$(DATE)] [Info] [System] Cleaning unneeded packages..."
