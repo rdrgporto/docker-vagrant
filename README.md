@@ -49,9 +49,9 @@ vagrant ssh
 ## Vagrant Commands
 
 ```bash
-vagrant up : start vm
-vagrant destroy: remove/delete vm
-vagrant ssh : connect to vm
-vagrant halt : shutdown vm
-vagrant provision : apply shell script
+vagrant up        : start vm
+vagrant destroy   : remove/delete vm
+vagrant ssh       : connect to vm
+vagrant halt      : shutdown vm
+vagrant provision : relaunch Ansible
 ```
