@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   # Configure provisioning
   config.vm.provision "ansible_local" do |ansible|
     ansible.install  = true
-    ansible.playbook = "playbook.yml"
+    ansible.playbook = "site.yml"
     ansible.become   = true
   end
   

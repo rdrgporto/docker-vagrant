@@ -1,7 +1,7 @@
 ---
 - name: Install Docker
   hosts: all
-  become: yes
+  become: true
   become_user: root
   roles:
     - docker
