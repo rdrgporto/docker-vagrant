@@ -30,3 +30,7 @@
   ansible.builtin.user:
     name: vagrant
     group: docker
+
+- name: Show IPs configured on virtual machine
+  ansible.builtin.debug:
+    msg: "{{ ansible_all_ipv4_addresses }}"
