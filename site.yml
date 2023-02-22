@@ -1,6 +1,6 @@
 ---
 - name: Install Docker
-  hosts: all
+  hosts: staging
   become: true
   become_user: root
   roles:

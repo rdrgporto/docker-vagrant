@@ -5,14 +5,16 @@ Vagrant.configure("2") do |config|
     
   # Configure VM
   config.vm.box         = "ubuntu/focal64"
+  config.vm.hostname    = "docker"
   config.ssh.insert_key = true
   config.vm.network "public_network"
   
   # Configure provisioning
   config.vm.provision "ansible_local" do |ansible|
-    ansible.install  = true
-    ansible.playbook = "site.yml"
-    ansible.become   = true
+    ansible.install        = true
+    ansible.playbook       = "site.yml"
+    ansible.inventory_path = "inventories/staging/hosts.ini"
+    ansible.limit          = "all"
   end
   
   # Configure Virtualbox
