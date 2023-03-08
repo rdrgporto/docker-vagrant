@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   # Configure provisioning
   config.vm.provision "ansible_local" do |ansible|
     ansible.install        = true
-    ansible.playbook       = "site.yml"
+    ansible.playbook       = "main.yml"
     ansible.inventory_path = "inventories/staging/hosts.ini"
     ansible.limit          = "all"
   end
