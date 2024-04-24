@@ -1,35 +1,23 @@
-Docker
-=========
+##  Welcome to the Docker role!
 
-Install **Docker** :whale: in Ubuntu.
+### Introduction
 
-Requirements
-------------
+------
 
-Prerequisites:
+This role installs the Docker tool.
 
-- Ubuntu
+### Tasks
 
-Variables
---------------
+------
 
-| docker_version | Version of Docker |
-| -------------- | ----------------------------------------- |
+This role performs several tasks, the most important of which are:
 
-Example Playbook
-----------------
+- Installing Docker Engine, Containerd and Docker Compose
 
-```yaml
----
-- name: Install Docker
-  hosts: all
-  become: true
-  become_user: root
-  roles:
-    - docker
-```
+### Variables
 
-License
--------
+------
 
-Apache-2.0
+The most important variables in this role:
+
+- **docker_version**: the version of Docker to install
