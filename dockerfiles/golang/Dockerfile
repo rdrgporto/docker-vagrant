@@ -1,5 +1,5 @@
 # We specify the base image we need for our go application
-FROM golang:1.19.7 as builder
+FROM golang:1.22.2 as builder
 
 # We specify Dockerfile's maintener
 LABEL maintainer="Rodrigo Porto <https://github.com/rdrgporto>"
@@ -20,7 +20,7 @@ RUN go mod init app
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
 # We use alpine in order to reduce image size
-FROM alpine:3.16.4
+FROM alpine:3.19.1
 
 # Create app-user (-D Don't assign a password -g Account information)
 RUN adduser -D -g '' app-user
