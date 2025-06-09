@@ -1,5 +1,5 @@
 # We specify the base image we need for our node application
-FROM node:21.7.3-alpine3.18
+FROM node:24.1.0-alpine3.22
 
 # We specify Dockerfile's maintener
 LABEL maintainer="Rodrigo Porto <https://github.com/rdrgporto>"
